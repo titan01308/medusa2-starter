@@ -26,6 +26,7 @@ export const CheckoutOrderSummaryItem: FC<CheckoutOrderSummaryItemProps> = ({ it
 
   if (!cart) return null;
 
+  console.log(item,'askdj')
   return (
     <li className="flex px-4 py-6 sm:px-6">
       <div className="flex-shrink-0">
@@ -45,6 +46,7 @@ export const CheckoutOrderSummaryItem: FC<CheckoutOrderSummaryItemProps> = ({ it
               </Link>
             </h4>
             <p className="mt-0.5 text-sm text-gray-500">{item.variant_title}</p>
+            { item?.metadata?.customMessage && <span className="mt-0.5 text-sm text-gray-500">Custom Message: {item.metadata.customMessage}</span>}
           </div>
 
           <div className="ml-4 flow-root flex-shrink-0">

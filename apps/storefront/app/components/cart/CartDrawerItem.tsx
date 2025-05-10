@@ -16,6 +16,8 @@ export const CartDrawerItem: FC<CartDrawerItemProps> = ({ item, currencyCode, is
   const removeCartItem = useRemoveCartItem();
   const handleRemoveFromCart = () => removeCartItem.submit(item);
 
+  console.log(item.metadata,'asdaxxx s')
+
   return (
     <li
       key={item.id}
@@ -43,10 +45,13 @@ export const CartDrawerItem: FC<CartDrawerItemProps> = ({ item, currencyCode, is
             </Button>
           </div>
         </div>
-        <div className="flex-1" />
+        <div className="flex-1">
+          {
+            !!item.metadata?.customMessage && <p className="text-sm  text-gray-500">Custom Message: {item.metadata?.customMessage}</p>
+          }
+        </div>
         <div className="flex items-center justify-between">
           <p className="text-sm  text-gray-500">Qty {item.quantity}</p>
-
           <div className="flex">
             <p className="ml-4">{formatLineItemPrice(item, currencyCode)}</p>
           </div>
