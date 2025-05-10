@@ -6,6 +6,7 @@ import { Grid } from '@app/components/common/grid/Grid';
 import { GridColumn } from '@app/components/common/grid/GridColumn';
 import { SubmitButton } from '@app/components/common/remix-hook-form/buttons/SubmitButton';
 import { QuantitySelector } from '@app/components/common/remix-hook-form/field-groups/QuantitySelector';
+import { AddCustomMessage } from '@app/components/product/CustomMessage';
 import { ProductImageGallery } from '@app/components/product/ProductImageGallery';
 import { ProductOptionSelectorRadio } from '@app/components/product/ProductOptionSelectorRadio';
 import { ProductOptionSelectorSelect } from '@app/components/product/ProductOptionSelectorSelect';
@@ -399,6 +400,8 @@ export const ProductTemplate = ({ product, reviewsCount, reviewStats }: ProductT
                               ))}
                             </section>
                           )}
+                          
+                          {product.tags && <AddCustomMessage tags={product.tags} radioOnChange={handleOptionChangeByRadio} /> }
 
                           <div className="my-2 flex flex-col gap-2">
                             <div className="flex items-center gap-4 py-2">

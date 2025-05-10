@@ -13,6 +13,7 @@ export const createLineItemSchema = z.object({
   productId: z.string().min(1, 'Product ID is required'),
   options: z.record(z.string()).default({}),
   quantity: z.coerce.number().int().min(1, 'Quantity must be at least 1'),
+  customMessage: z.string().optional()
 });
 
 type CreateLineItemFormData = z.infer<typeof createLineItemSchema>;
@@ -27,7 +28,7 @@ export async function action({ request }: ActionFunctionArgs) {
     return data({ errors }, { status: 400 });
   }
 
-  const { productId, options, quantity } = validatedFormData;
+  const { productId, options, quantity, customMessage } = validatedFormData;
 
   const region = await getSelectedRegion(request.headers);
 
@@ -60,6 +61,7 @@ export async function action({ request }: ActionFunctionArgs) {
   const { cart } = await addToCart(request, {
     variantId: variant.id!,
     quantity,
+    customMessage
   });
 
   await setCartId(responseHeaders, cart.id);

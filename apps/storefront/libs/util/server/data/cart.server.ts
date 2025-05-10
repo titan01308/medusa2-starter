@@ -63,9 +63,10 @@ export const addToCart = withAuthHeaders(
     data: {
       variantId: string;
       quantity: number;
+      customMessage: string;
     },
   ) => {
-    const { variantId, quantity } = data;
+    const { variantId, quantity, customMessage } = data;
 
     if (!variantId) {
       throw new Error('Missing variant ID when adding to cart');
@@ -79,6 +80,9 @@ export const addToCart = withAuthHeaders(
         {
           variant_id: variantId,
           quantity,
+          metadata: {
+            customMessage: customMessage || ''
+          }
         },
         {},
         authHeaders,

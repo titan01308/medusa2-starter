@@ -45,6 +45,7 @@ export const CheckoutOrderSummaryItem: FC<CheckoutOrderSummaryItemProps> = ({ it
               </Link>
             </h4>
             <p className="mt-0.5 text-sm text-gray-500">{item.variant_title}</p>
+            { item?.metadata?.customMessage && <span className="mt-0.5 text-sm text-gray-500">Custom Message: {item.metadata.customMessage}</span>}
           </div>
 
           <div className="ml-4 flow-root flex-shrink-0">

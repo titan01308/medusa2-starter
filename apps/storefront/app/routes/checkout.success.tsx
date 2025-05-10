@@ -1,6 +1,7 @@
 import { ButtonLink } from '@app/components/common/buttons/ButtonLink';
 import { Container } from '@app/components/common/container/Container';
 import { Image } from '@app/components/common/images/Image';
+import { ListItems } from '@app/components/sections/ListItems';
 import { formatPhoneNumber } from '@libs/util/phoneNumber';
 import { formatPrice } from '@libs/util/prices';
 import { retrieveOrder } from '@libs/util/server/data/orders.server';
@@ -64,6 +65,11 @@ export default function CheckoutSuccessRoute() {
                       </h3>
                       <p className="text-sm font-normal text-gray-500">{item.variant_title}</p>
                     </div>
+                     {
+                      item.metadata && item.metadata?.customMessage &&  <div className="flex flex-1 items-end">
+                        <p className="font-normal backdrop:text-gray-500">Custom Message: <span className="font-italic">{item.metadata.customMessage}</span></p>
+                      </div>
+                    }
                     <div className="flex flex-1 items-end">
                       <span className="font-normal backdrop:text-gray-500">Qty {item.quantity}</span>
                     </div>
