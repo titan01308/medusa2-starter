@@ -26,7 +26,6 @@ export const CheckoutOrderSummaryItem: FC<CheckoutOrderSummaryItemProps> = ({ it
 
   if (!cart) return null;
 
-  console.log(item,'askdj')
   return (
     <li className="flex px-4 py-6 sm:px-6">
       <div className="flex-shrink-0">

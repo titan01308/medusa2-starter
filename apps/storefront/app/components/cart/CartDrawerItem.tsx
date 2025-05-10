@@ -16,8 +16,6 @@ export const CartDrawerItem: FC<CartDrawerItemProps> = ({ item, currencyCode, is
   const removeCartItem = useRemoveCartItem();
   const handleRemoveFromCart = () => removeCartItem.submit(item);
 
-  console.log(item.metadata,'asdaxxx s')
-
   return (
     <li
       key={item.id}

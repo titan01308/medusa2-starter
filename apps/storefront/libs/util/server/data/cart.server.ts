@@ -72,7 +72,6 @@ export const addToCart = withAuthHeaders(
       throw new Error('Missing variant ID when adding to cart');
     }
 
-    console.log(customMessage,'askdjkalsd')
     const cartId = await getCartId(request.headers);
 
     if (cartId) {
